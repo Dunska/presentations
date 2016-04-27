@@ -1,0 +1,20 @@
+= Git
+
+:backend: deckjs
+
+== Title Slide
+Presenter Name
+
+== Slide One
+
+Foo
+
+Bar
+
+World
+
+[canvas-image=./images/cosplay.jpg]
+== Slide Two
+
+[.canvas-caption, position=center-up]
+Hello World - Good Bye Cruel World
