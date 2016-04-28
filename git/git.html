@@ -97,10 +97,25 @@ merge/rebase branch</p></div>
 <h2>Des questions ?</h2>
 
 </section>
+<div aria-role="navigation">
+<a class="deck-prev-link" href="#" title="Previous">&#8592;</a>
+<a class="deck-next-link" href="#" title="Next">&#8594;</a>
+</div>
+<p aria-role="status" class="deck-status">
+<span class="deck-status-current"></span>
+/
+<span class="deck-status-total"></span>
+</p>
 </div>
 <script src="deck.js/jquery.min.js"></script>
 <script src="deck.js/core/deck.core.js"></script>
 <script src="deck.js/extensions/scale/deck.scale.js"></script>
+<script src="deck.js/extensions/menu/deck.menu.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/split/deck.split.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+<script src="deck.js/extensions/toc/deck.toc.js"></script>
+<div class="deck-toc"></div>
 <script>
   (function($, deck, undefined) {
     $.deck.defaults.keys['previous'] = [8, 33, 37, 39];
