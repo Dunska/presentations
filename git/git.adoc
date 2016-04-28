@@ -2,19 +2,63 @@
 
 :backend: deckjs
 
-== Title Slide
-Presenter Name
+== Git, c'est quoi ?
 
-== Slide One
+SCM
 
-Foo
+Crée par XXX en YYYY
 
-Bar
+== Git, il remplace quoi ?
 
-World
+CVS
+SVN
 
-[canvas-image=./images/cosplay.jpg]
-== Slide Two
+== Les bases : Clone, Push, Pull
 
-[.canvas-caption, position=center-up]
-Hello World - Good Bye Cruel World
+git clone
+git push
+git pull
+
+== Les bases : Le staging et les commits
+
+git status
+git add
+git commit
+git log
+git diff
+
+== Les remotes
+
+== Les branches
+
+
+Explication git push origin master
+
+== Le merge / rebase
+amend
+gpr
+merge/rebase branch
+
+== Le rebase interacif
+
+== Le bisect
+
+== Les IHM
+
+- Ligne de commande (gitk, git gui)
+- SourceTree
+- SmartGit
+- Plugin Eclipse
+- Intégration native Atom, SublimeText
+
+== Les repos
+
+- GitHub
+- BitBucket
+
+== Les outils
+
+- GitBlit
+- Gerrit
+
+== Des questions ?
