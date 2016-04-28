@@ -2,10 +2,6 @@
 
 :backend: deckjs
 :deckjs_transition: horizontal-slide
-:navigation:
-:menu:
-:status:
-:toc:
 :split:
 
 == Git, c'est quoi ?
