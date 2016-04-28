@@ -1,5 +1,5 @@
 = Git - Apsitech 2016
-
+Kevin MARCELLIER
 :backend: deckjs
 :deckjs_transition: horizontal-slide
 :split:
@@ -12,8 +12,13 @@ Crée par XXX en YYYY
 
 == Git, il remplace quoi ?
 
+[%step]
 CVS
+
+
+[%step]
 SVN
+
 
 == Les bases : Clone, Push, Pull
 
@@ -31,8 +36,12 @@ git diff
 
 == Les remotes
 
+[quote, Linus Torvalds]
+I'm an egotistical bastard, and I name all my projects after myself. First 'Linux', now 'git'.
+
 == Les branches
 
+image::resources/cat.png[]
 
 Explication git push origin master
 
@@ -43,7 +52,39 @@ merge/rebase branch
 
 == Le rebase interacif
 
+[source,role="console"]
+----
+$ git bisect log
+git bisect start
+# good: [aa630f76c8c3e8e0ee894538e5bf262890afb862] [maven-release-plugin] prepare release jenkins-1.423
+git bisect good aa630f76c8c3e8e0ee894538e5bf262890afb862
+# bad: [cbb2e30deb846414c203a36c9b4fdf00c1193c25] [maven-release-plugin] prepare release jenkins-1.424
+[...]
+git bisect bad cbba3c88a9ce76edd47a4ab9b9e54dc9bb05e606
+# bad: [1fd7fb2c11dd3cb46843d274fcd4aaf44f34213b] when tried stand-alone, I learned that those dependencies cannot be really excluded.
+git bisect bad 1fd7fb2c11dd3cb46843d274fcd4aaf44f34213b
+1fd7fb2c11dd3cb46843d274fcd4aaf44f34213b is the first bad commit
+commit 1fd7fb2c11dd3cb46843d274fcd4aaf44f34213b
+Author: Kohsuke Kawaguchi &lt;kk@kohsuke.org&gt;
+Date:   Sat Jul 30 09:59:07 2011 -0700
+
+    when tried stand-alone, I learned that those dependencies cannot be really excluded.
+
+:040000 040000 afe7deb89dae782db89ee79e36d767f348b6f1b5 e2be3a211e5a211ad0d91fee8e32095a888d4786 M      core
+----
+
+
 == Le bisect
+
+
+[source]
+.What content has been committed for the _theFile_ file? (1) or (2)?
+----
+echo "dingdingdingbabababaaaaa" >> theFile # (1)
+git add theFile
+echo "blah" > theFile # (2)
+git commit -m "done"
+----
 
 == Les IHM
 

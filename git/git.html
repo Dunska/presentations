@@ -4,11 +4,12 @@
 <meta content="text/html; charset=" http-equiv="Content-Type">
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta content="Asciidoctor 1.5.4" name="generator">
+<meta content="Kevin MARCELLIER" name="author">
 <title>Git - Apsitech 2016</title>
 <link href="deck.js/core/deck.core.css" rel="stylesheet">
 <link href="deck.js/extensions/scale/deck.scale.css" media="screen" rel="stylesheet">
 <link href="deck.js/themes/style/web-2.0.css" media="screen" rel="stylesheet">
-<link href="deck.js/themes/transition/fade.css" media="screen" rel="stylesheet">
+<link href="deck.js/themes/transition/horizontal-slide.css" media="screen" rel="stylesheet">
 <link href="deck.js/core/print.css" media="print" rel="stylesheet">
 <script src="deck.js/modernizr.custom.js"></script>
 </head>
@@ -16,6 +17,8 @@
 <div class="deck-container">
 <section class="slide" id="title-slide">
 <h1>Git - Apsitech 2016</h1>
+<span id="author">Kevin MARCELLIER</span>
+<br>
 </section>
 <section class="slide" id="_git_c_est_quoi">
 <h2>Git, c&#8217;est quoi ?</h2>
@@ -24,8 +27,8 @@
 </section>
 <section class="slide" id="_git_il_remplace_quoi">
 <h2>Git, il remplace quoi ?</h2>
-<div class="paragraph"><p>CVS
-SVN</p></div>
+<div class="paragraph slide"><p>CVS</p></div>
+<div class="paragraph slide"><p>SVN</p></div>
 </section>
 <section class="slide" id="_les_bases_clone_push_pull">
 <h2>Les bases : Clone, Push, Pull</h2>
@@ -43,10 +46,22 @@ git diff</p></div>
 </section>
 <section class="slide" id="_les_remotes">
 <h2>Les remotes</h2>
-
+<div class="quoteblock">
+<blockquote>
+I&#8217;m an egotistical bastard, and I name all my projects after myself. First 'Linux', now 'git'.
+<div class="attribution">
+<cite>Linus Torvalds</cite>
+</div>
+</blockquote>
+</div>
 </section>
 <section class="slide" id="_les_branches">
 <h2>Les branches</h2>
+<div class="imageblock">
+<div class="content">
+<img alt="cat" src="resources/cat.png">
+</div>
+</div>
 <div class="paragraph"><p>Explication git push origin master</p></div>
 </section>
 <section class="slide" id="_le_merge_rebase">
@@ -57,11 +72,39 @@ merge/rebase branch</p></div>
 </section>
 <section class="slide" id="_le_rebase_interacif">
 <h2>Le rebase interacif</h2>
+<div class="listingblock console">
+<div class="content">
+<pre class="highlight"><code>$ git bisect log
+git bisect start
+# good: [aa630f76c8c3e8e0ee894538e5bf262890afb862] [maven-release-plugin] prepare release jenkins-1.423
+git bisect good aa630f76c8c3e8e0ee894538e5bf262890afb862
+# bad: [cbb2e30deb846414c203a36c9b4fdf00c1193c25] [maven-release-plugin] prepare release jenkins-1.424
+[...]
+git bisect bad cbba3c88a9ce76edd47a4ab9b9e54dc9bb05e606
+# bad: [1fd7fb2c11dd3cb46843d274fcd4aaf44f34213b] when tried stand-alone, I learned that those dependencies cannot be really excluded.
+git bisect bad 1fd7fb2c11dd3cb46843d274fcd4aaf44f34213b
+1fd7fb2c11dd3cb46843d274fcd4aaf44f34213b is the first bad commit
+commit 1fd7fb2c11dd3cb46843d274fcd4aaf44f34213b
+Author: Kohsuke Kawaguchi &amp;lt;kk@kohsuke.org&amp;gt;
+Date:   Sat Jul 30 09:59:07 2011 -0700
 
+    when tried stand-alone, I learned that those dependencies cannot be really excluded.
+
+:040000 040000 afe7deb89dae782db89ee79e36d767f348b6f1b5 e2be3a211e5a211ad0d91fee8e32095a888d4786 M      core</code></pre>
+</div>
+</div>
 </section>
 <section class="slide" id="_le_bisect">
 <h2>Le bisect</h2>
-
+<div class="listingblock">
+<div class="title">What content has been committed for the <em>theFile</em> file? (1) or (2)?</div>
+<div class="content">
+<pre class="highlight"><code>echo "dingdingdingbabababaaaaa" &gt;&gt; theFile # (1)
+git add theFile
+echo "blah" &gt; theFile # (2)
+git commit -m "done"</code></pre>
+</div>
+</div>
 </section>
 <section class="slide" id="_les_ihm">
 <h2>Les IHM</h2>
