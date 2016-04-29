@@ -1,0 +1,26 @@
+= Coding Dojo
+Kevin MARCELLIER
+
+:backend: deckjs
+:deckjs_transition: horizontal-slide
+:split:
+
+== Deux formats
+
+[%step]
+--
+**KATA**
+
+- Un problème
+- Une solution présentée par un ou des binôme(s)
+- On décortique et on refait
+--
+
+[%step]
+--
+**RANDORI**
+
+- Un problème
+- Résolution progressive
+- Une personne au clavier, tourne toutes les 5 minutes
+--
