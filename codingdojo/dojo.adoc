@@ -5,6 +5,56 @@ Kevin MARCELLIER
 :deckjs_transition: horizontal-slide
 :split:
 
+== Histoire
+
+[source]
+Dave Thomas : katas du développeur
+Laurent Bossavit : faisons les en groupe
+
+[%step]
+image::resources/histo.png[]
+
+
+== Coding Dojo, C'est quoi ?
+
+<div style="background-color">
+ça n'est pas :
+un prof qui dispense la bonne parole
+une formation passive
+</div>
+
+
+Un espace d'échange
+
+un lieu de partage
+un lieu d'expérimentations
+un lieu de pratique
+un lieu d'apprentissage
+
+
+
+== Test
+
+[width="60%",options="header"]
+|==============================================
+| Option          | Description
+| -a 'USER GROUP' | Add 'USER' to 'GROUP'.
+| -R 'GROUP'      | Disables access to 'GROUP'.
+|==============================================
+
+== Test 2
+
+NOTE: This is a note
+
+WARNING: This is a warning
+
+IMPORTANT: This is an important thing
+
+TIP: This is a Tip
+
+CAUTION: You should take care about that
+
+
 == Deux formats
 
 [%step]
@@ -24,6 +74,21 @@ Kevin MARCELLIER
 - Résolution progressive
 - Une personne au clavier, tourne toutes les 5 minutes
 --
+
+== Sujets abordés
+
+des techniques
+algos, patterns, ...
+
+des pratiques
+pair programming
+TDD
+BDD
+conception émergente
+
+
+== Test Driven Developmnent (TDD)
+
 
 == Test Driven Developmnent (TDD)
 
@@ -85,3 +150,12 @@ public void addThreeToFiveSouldReturnHeight(){...}
 @Test (expected = ObjectNotFoundException.class)
 public void loadFileWithNonExistantIdShouldThrowError(){...}
 ----
+
+
+== On y va ?
+
+Kata Roman Numerals
+
+Kata Mars Rover
+
+Kata Bowling
