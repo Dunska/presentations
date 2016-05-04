@@ -47,6 +47,29 @@
 </div>
 </div>
 </section>
+<section class="slide" id="_test_driven_developmnent_tdd">
+<h2>Test Driven Developmnent (TDD)</h2>
+<div class="paragraph"><p>Le cycle de développement :</p></div>
+<div class="ulist">
+<ul>
+<li class="slide">Ecriture d&#8217;un test unitaire</li>
+<li class="slide">Vérification que le test échoue</li>
+<li class="slide">Ecriture du test suffisant pour passer le code</li>
+<li class="slide">Vérification que le test passe</li>
+<li class="slide">Refactoring du code</li>
+</ul>
+</div>
+<div class="listingblock console slide">
+<div class="title">Les tests sont la spécification</div>
+<div class="content">
+<pre><code>@Test
+public void addThreeToFiveSouldReturnHeight(){...}
+
+@Test (expected = ObjectNotFoundException.class)
+public void loadFileWithNonExistantIdShouldThrowError(){...}</code></pre>
+</div>
+</div>
+</section>
 </div>
 <script src="deck.js/jquery.min.js"></script>
 <script src="deck.js/core/deck.core.js"></script>

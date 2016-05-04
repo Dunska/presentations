@@ -24,3 +24,26 @@ Kevin MARCELLIER
 - Résolution progressive
 - Une personne au clavier, tourne toutes les 5 minutes
 --
+
+== Test Driven Developmnent (TDD)
+
+Le cycle de développement :
+[%step]
+- Ecriture d'un test unitaire
+- Vérification que le test échoue
+- Ecriture du test suffisant pour passer le code
+- Vérification que le test passe
+- Refactoring du code
+
+
+
+[source,role="console"]
+[%step]
+.Les tests sont la spécification
+----
+@Test
+public void addThreeToFiveSouldReturnHeight(){...}
+
+@Test (expected = ObjectNotFoundException.class)
+public void loadFileWithNonExistantIdShouldThrowError(){...}
+----
