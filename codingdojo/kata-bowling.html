@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+	<title>Kata Bowling</title>
+
+	<meta name="description" content="Description du kata Bowling">
+	<meta name="author" content="Ludovic Pradel">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../reveal.js/css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../reveal.js/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../reveal.js/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>Kata Bowling</h1>
+					<p>d'après le <a href="http://codingdojo.org/">KataCatalogue</a>.</p>
+					<p>
+						<small><a href="http://twitter.com/ludopradel">@ludopradel</a></small>
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Objectif</h2>
+						<p>&Eacute;crire une classe BowlingGame ayant 2 m&eacute;thodes : </p>
+						<ul>
+							<li><b>roll(pins) </b>: appel&eacute; &agrave; chaque fois qu'un joueur fait tomber une quille (<i>pin</i>). L'argument correspond au nombre de quille tomb&eacute;es.</li>
+							<li><b>score() </b>: appeler &agrave; la fin de la partie. Elle retourne le score total de la partie.</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Rappel bowling</h2>
+						<div>
+						<img width="500" src="resources/bowling.png" />
+							<ul>
+								<li class="fragment">Une partie se d&eacute;compose en 10 frames.</li>
+								<li class="fragment">2 boules lanc&eacute;es dans chaque frame (sauf Strike).</li>
+								<li class="fragment">Un Strike rapporte 10 points plus le nombre de quilles abattues aux 2 lancers suivants.</li>
+								<li class="fragment">Un Spare rapporte 10 points plus le nombre de quilles abattues au lancer suivant.</li>
+								<li class="fragment">Lors du dixi&egrave;me lancer, un strike va permettre de lancer deux boules suppl&eacute;mentaires.</li>
+								<li class="fragment">Lors du dixi&egrave;me lancer, un spare va permettre de lancer une boule suppl&eacute;mentaire.</li>
+
+							</ul>
+						</div>
+					</section>
+				</section>
+
+
+
+			</div>
+
+		</div>
+
+		<script src="../reveal.js/lib/js/head.min.js"></script>
+		<script src="../reveal.js/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../reveal.js/plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

@@ -135,8 +135,8 @@ public void loadFileWithNonExistantIdShouldThrowError(){...}
 
 == On y va ?
 
-Kata Roman Numerals
+http://dunska.github.io/presentations/codingdojo/kata-romannumerals.html[Kata Roman Numerals]
 
-Kata Mars Rover
+http://dunska.github.io/presentations/codingdojo/kata-romannumerals.html[Kata Mars Rover]
 
-Kata Bowling
+http://dunska.github.io/presentations/codingdojo/kata-romannumerals.html[Kata Bowling]
