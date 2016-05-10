@@ -137,6 +137,6 @@ public void loadFileWithNonExistantIdShouldThrowError(){...}
 
 http://dunska.github.io/presentations/codingdojo/kata-romannumerals.html[Kata Roman Numerals]
 
-http://dunska.github.io/presentations/codingdojo/kata-romannumerals.html[Kata Mars Rover]
+http://dunska.github.io/presentations/codingdojo/kata-marsrover.html[Kata Mars Rover]
 
-http://dunska.github.io/presentations/codingdojo/kata-romannumerals.html[Kata Bowling]
+http://dunska.github.io/presentations/codingdojo/kata-bowling.html[Kata Bowling]
