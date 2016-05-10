@@ -15,15 +15,25 @@ image::resources/histo.png[]
 
 == Coding Dojo, C'est quoi ?
 
-[.canvas-caption, position=center-up]
-Ca n'est pas un prof qui dispense la bonne parole, une formation passive
 
-== Coding Dojo, C'est quoi ?
+[%step]
+--
+**Ca n'est pas :**
 
+- Un prof qui dispense la bonne parole
+- Une formation passive
+--
 
-[.canvas-caption, position=center-up]
-Un espace d'échange - un lieu de partage - un lieu d'expérimentations - un lieu de pratique - un lieu d'apprentissage
+[%step]
+--
+**C'est :**
 
+- Un espace d'échange
+- Un lieu de partage
+- Un lieu d'expérimentations
+- Un lieu de pratique
+- Un lieu d'apprentissage
+--
 
 == Deux formats
 
