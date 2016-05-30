@@ -9,39 +9,37 @@ Kevin MARCELLIER
 [quote]
 Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
-SCM :
+=== SCM
 
-- CVS
-- Subversion
-- Perforce
-- ClearCase
+* CVS
+* Subversion
+* Perforce
+* ClearCase
 
 == Histoire
 
-- 1991 → 2002 : Le développement de Linux utilise tarball
-- 2002 : Passage à BitKeeper (licences offertes à l'OSS).
-- Avril 2005 : Fin annoncée de la licence gratuite
-- 7 Avril 2005 : Première version de Git
-- 18 Mai 2016 : Version 2.8.3
+* 1991 → 2002 : Le développement de Linux utilise tarball
+* 2002 : Passage à BitKeeper (licences offertes à l'OSS).
+* Avril 2005 : Fin annoncée de la licence gratuite
+* 7 Avril 2005 : Première version de Git
+* 18 Mai 2016 : Version 2.8.3
 
 [quote, Linus Torvalds]
 I'm an egotistical bastard, and I name all my projects after myself. First 'Linux', now 'git'.
 
 == Décentralisé
 
-- **D**VCS
-- **Dé**centralisé
+* **D**VCS
+* **Dé**centralisé
 
-[%step]
---
-- Techniquement, pas besoin de serveur
-- _(Presque)_ Tout se passe donc en local
-- Après un clone, *tout* l'historique du projet est en local et ne nécessite plus aucun accès réseau pour le manipuler
---
-
-[%step]
 image::resources/DCVS.png[]
 
+[%step]
+--
+* Techniquement, pas besoin de serveur
+* _(Presque)_ Tout se passe donc en local
+* Après un clone, *tout* l'historique du projet est en local et ne nécessite plus aucun accès réseau pour le manipuler
+--
 
 == Les 4 types d'objets
 
@@ -92,8 +90,8 @@ image::resources/snapshots-vs-delta.png[]
 [%step]
 --
 [source, console]
-$ git config --global user.name "Kevin Marcellier"
-$ git config --global user.email kevin@marcellier.fr
+$ git config - -global user.name "Kevin Marcellier"
+$ git config - -global user.email kevin@marcellier.fr
 --
 
 [%step]
@@ -103,7 +101,7 @@ $ mkdir mon-projet-git
 $ cd mon-projet-git/
 $ git init
 Initialized empty Git repository in mon-projet-git/.git/
-$ git commit -m "Initial commit" --allow-empty
+$ git commit -m "Initial commit" - -allow-empty
 [master (root-commit) 53b89fc] Initial commit
 --
 
@@ -120,90 +118,246 @@ create mode 100644 monFichier.txt
 
 == Les bases : Le staging et les commits
 
-- git add
-- git commit
-- git status
+* git add / git rm
+* git commit
+* git status
 
 image::resources/areas.png[]
 
 _Le fichier .gitignore permet de définir les fichier à ignorer._
 
-=== Quizz
-
-[source]
-.What content has been committed for the _theFile_ file? (1) or (2)?
-----
-echo "Hello world" >> theFile # (1)
-git add theFile
-echo "Goodbye my friends" > theFile # (2)
-git commit -m "done"
-----
-
 == Quelques commandes utiles
 
-- git log
--- git log --pretty=oneline
--- git log --pretty=format:"%h - %an, %ar : %s"
--- git log --pretty="%h - %s" --author=gitster --since="2008-10-01" --before="2008-11-01" --no-merges
-- git diff
-- git reset
--- git reset HEAD monFichier.txt
-- git checkout -- <file>
-- git fetch [remote-name]
-- git tag
--- git tag -l "v1.8.5*"
--- git tag -a v1.4 -m "my version 1.4"
--- git tag -a v1.2 9fceb02
-
+[%step]
+* Log
+** git log --pretty=oneline
+** git log --pretty=format:"%h - %an, %ar : %s"
+** git log --pretty="%h - %s" --author=gitster --since="2008-10-01" --before="2008-11-01" --no-merges
+** git log -p -2
+* Diff
+** git diff
+** git diff --staged
+* Reset
+** git reset HEAD monFichier.txt (Unstage)
+** git reset --soft HEAD~2
+** git reset --hard 4556a12
+* Tag
+** git tag
+** git tag -l "v1.8.5*"
+** git tag -a v1.4 -m "my version 1.4"
+** git tag -a v1.2 9fceb02
+* Checkout
+** git checkout -- <file> (Discard changes)
 
 == Les remotes
 
-- git clone
-- git remote
--- git remote -v
--- git remote add github https://github.com/dunska/super-projet
-- git push
-- git pull
+[%step]
+* git clone
+** git clone https://github.com/libgit2/libgit2 myProject
+* git remote
+** git remote -v
+** git remote add github https://github.com/dunska/super-projet
+** git remote show origin
+* git push
+** git push origin [branch]
+** git push origin [tagname]
+** git push origin --tags
+
+
+
+== Créer une branche
+
+[source, console]
+$ git branch testing
+
+image::resources/head-to-master.png[]
+
+== Switcher sur une branche
+[source, console]
+git checkout testing
+
+image::resources/head-to-testing.png[]
+
+
+
+== Travailler sur une branche
+
+[source, console]
+$ vim test.rb
+$ git commit -a -m 'made a change'
+
+image::resources/advance-testing.png[]
+
+== Travailler sur une autre branche (master)
+
+[source, console]
+$ git checkout master
+$ vim test.rb
+$ git commit -a -m 'made other changes'
+
+image::resources/advance-master.png[]
+
+== Merge d'une branche dans une autre
+
+[source, console]
+$ git checkout master
+Switched to branch 'master'
+
+image::resources/basic-merging-1.png[]
+
+== Merge d'une branche dans une autre
+
+[source, console]
+$ git merge iss53
+Merge made by the 'recursive' strategy.
+index.html |    1 +
+1 file changed, 1 insertion(+)
+
+image::resources/basic-merging-2.png[]
+
+[%step]
+_Il peut y avoir des conflits à gérer_
+
+== Le fast-forward
+
+Si possible, Git cherche à ne pas créer de _commit de merge_ même si on lui demande un _merge_
+
+image::resources/basic-branching-4.png[]
+
+== Le fast-forward
+
+[source, console]
+$ git checkout master
+$ git merge hotfix
+Updating f42c576..3a0874c
+Fast-forward
+ index.html | 2 ++
+ 1 file changed, 2 insertions(+)
+
+image::resources/basic-branching-5.png[]
+
+[%step]
+--
+[source, console]
+$ git branch -d hotfix
+Deleted branch hotfix (3a0874c).
+--
 
 == Les branches
 
-- Explication git push origin master
-- git checkout
-- git fetch
+* Vision des branches
+** git branch --merged
+** git branch --no-merged
+* Suppression
+** git branch -d testing / git branch -D testing
+* Creation
+** git checkout -b [branchname] [tagname]
 
-== Le merge / rebase
+== Le fetch
 
-- amend
+image::resources/remote-branches-5.png[]
+
+
+== Le rebase
+
+image::resources/basic-rebase-1.png[]
+
+== Le rebase
+
+[source, console]
+$ git checkout experiment
+$ git rebase master
+First, rewinding head to replay your work on top of it...
+Applying: added staged command
+
+[%step]
+image::resources/basic-rebase-3.png[]
+
+== Le rebase
+
+[source, console]
+$ git checkout master
+$ git merge experiment
+
+[%step]
+image::resources/basic-rebase-4.png[]
+
+=== Pull rebase
+
+[source, console]
+$ git pull --rebase
+
+== Jouer avec les commits
+
+=== Amend
 [source]
 $ git commit -m 'initial commit'
 $ git add forgotten_file
 $ git commit --amend
 
+=== Cherry-pick
 
-- merge/rebase branch
+Permet d'appliquer un ou des commits données sur la branche actuelle
 
--- git merge
---- git branch --merged
---- git branch --no-merged
---- git branch -d testing / git branch -D testing
-
--- Conflit
 [source]
-<<<<<<< HEAD:index.html
-<div id="footer">contact : email.support@github.com</div>
-=======
-<div id="footer">
- please contact us at support@github.com
-</div>
->>>>>>> iss53:index.html
+$ git cherry-pick d42c389f
+$ git cherry-pick master~4 master~2
 
-- gpr
+=== Revert
 
-=== Le fast-forward
+Permet de créer un commit qui en annule un ou des autres
 
-Si possible, Git cherche à ne pas créer de _commit de merge_ même si on lui demande un _merge_
+[source]
+$ git revert d42c389f
+$ git revert HEAD~3
 
-image::ressources/ff.png[Fast-forward illustration]
+
+== Le add partiel
+
+Donne la possibilité de n'ajouter qu'une ou plusieurs parties des changement d'un fichier
+
+[source]
+$ git add --patch test.xml
+$ git add --p test.xml
+
+[source]
+$ git add --interactive
+$ git add -i
+
+
+== Le rebase interacif
+
+* Editing commit
+* Reordering Commits
+* Squashing/Fixup Commits
+* Splitting a Commit
+
+[source]
+$ git rebase -i HEAD~3
+pick f7f3f6d changed my name a bit
+pick 310154e updated README formatting and added blame
+pick a5f4a0d added cat-file
+# Rebase 710f0f8..a5f4a0d onto 710f0f8
+#
+# Commands:
+#  p, pick = use commit
+#  r, reword = use commit, but edit the commit message
+#  e, edit = use commit, but stop for amending
+#  s, squash = use commit, but meld into previous commit
+#  f, fixup = like "squash", but discard this commit's log message
+#  x, exec = run command (the rest of the line) using shell
+
+[%step]
+*/!\ Pas de Rebase sur ce qui a été poussé /!\*
+
+== Le bisect
+
+Recherche d'un commit problématique par dichotomie
+
+[source]
+$ git bisect start
+$ git bisect bad                 # Current version is bad
+$ git bisect good v2.6.13-rc2    # v2.6.13-rc2 is known to be good
 
 == Les alias
 
@@ -228,14 +382,6 @@ $ git reflog
 53b89fc HEAD@{5}: commit (initial): Initial commit
 
 
-== Le rebase interacif
-
-
-
-== Le bisect
-
-Recherche d'un commit problématique par dichotomie
-
 == Les IHM
 
 - Ligne de commande (gitk, git gui)
@@ -254,3 +400,11 @@ Recherche d'un commit problématique par dichotomie
 - Gerrit
 
 == Avantages et inconvénients
+
+
+== Mais encore
+
+* Revision Selection
+* Interactive Staging
+* Stash & Clean
+* Grep

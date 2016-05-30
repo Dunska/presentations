@@ -27,7 +27,8 @@
 Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 </blockquote>
 </div>
-<div class="paragraph"><p>SCM :</p></div>
+<section class="slide" id="_scm">
+<h2>SCM</h2>
 <div class="ulist">
 <ul>
 <li>CVS</li>
@@ -36,6 +37,7 @@ Git is a free and open source distributed version control system designed to han
 <li>ClearCase</li>
 </ul>
 </div>
+</section>
 </section>
 <section class="slide" id="_histoire">
 <h2>Histoire</h2>
@@ -65,6 +67,11 @@ I&#8217;m an egotistical bastard, and I name all my projects after myself. First
 <li><strong>Dé</strong>centralisé</li>
 </ul>
 </div>
+<div class="imageblock">
+<div class="content">
+<img alt="DCVS" src="resources/DCVS.png">
+</div>
+</div>
 <div class="openblock slide">
 <div class="content">
 <div class="ulist">
@@ -74,11 +81,6 @@ I&#8217;m an egotistical bastard, and I name all my projects after myself. First
 <li>Après un clone, <strong>tout</strong> l&#8217;historique du projet est en local et ne nécessite plus aucun accès réseau pour le manipuler</li>
 </ul>
 </div>
-</div>
-</div>
-<div class="imageblock slide">
-<div class="content">
-<img alt="DCVS" src="resources/DCVS.png">
 </div>
 </div>
 </section>
@@ -158,8 +160,8 @@ I&#8217;m an egotistical bastard, and I name all my projects after myself. First
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="console language-console">$ git config --global user.name "Kevin Marcellier"
-$ git config --global user.email kevin@marcellier.fr</code></pre>
+<pre class="highlight"><code class="console language-console">$ git config - -global user.name "Kevin Marcellier"
+$ git config - -global user.email kevin@marcellier.fr</code></pre>
 </div>
 </div>
 </div>
@@ -172,7 +174,7 @@ $ git config --global user.email kevin@marcellier.fr</code></pre>
 $ cd mon-projet-git/
 $ git init
 Initialized empty Git repository in mon-projet-git/.git/
-$ git commit -m "Initial commit" --allow-empty
+$ git commit -m "Initial commit" - -allow-empty
 [master (root-commit) 53b89fc] Initial commit</code></pre>
 </div>
 </div>
@@ -197,7 +199,7 @@ create mode 100644 monFichier.txt</code></pre>
 <h2>Les bases : Le staging et les commits</h2>
 <div class="ulist">
 <ul>
-<li>git add</li>
+<li>git add / git rm</li>
 <li>git commit</li>
 <li>git status</li>
 </ul>
@@ -208,29 +210,50 @@ create mode 100644 monFichier.txt</code></pre>
 </div>
 </div>
 <div class="paragraph"><p><em>Le fichier .gitignore permet de définir les fichier à ignorer.</em></p></div>
-<section class="slide" id="_quizz">
-<h2>Quizz</h2>
-<div class="listingblock">
-<div class="title">What content has been committed for the <em>theFile</em> file? (1) or (2)?</div>
-<div class="content">
-<pre class="highlight"><code>echo "Hello world" &gt;&gt; theFile # (1)
-git add theFile
-echo "Goodbye my friends" &gt; theFile # (2)
-git commit -m "done"</code></pre>
-</div>
-</div>
-</section>
 </section>
 <section class="slide" id="_quelques_commandes_utiles">
 <h2>Quelques commandes utiles</h2>
 <div class="ulist">
 <ul>
-<li>git log&#8201;&#8212;&#8201;git log --pretty=oneline&#8201;&#8212;&#8201;git log --pretty=format:"%h - %an, %ar : %s"&#8201;&#8212;&#8201;git log --pretty="%h - %s" --author=gitster --since="2008-10-01" --before="2008-11-01" --no-merges</li>
+<li class="slide"><p>
+Log<div class="ulist">
+<ul>
+<li>git log --pretty=oneline</li>
+<li>git log --pretty=format:"%h - %an, %ar : %s"</li>
+<li>git log --pretty="%h - %s" --author=gitster --since="2008-10-01" --before="2008-11-01" --no-merges</li>
+<li>git log -p -2</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+Diff<div class="ulist">
+<ul>
 <li>git diff</li>
-<li>git reset&#8201;&#8212;&#8201;git reset HEAD monFichier.txt</li>
-<li>git checkout&#8201;&#8212;&#8201;&lt;file&gt;</li>
-<li>git fetch [remote-name]</li>
-<li>git tag&#8201;&#8212;&#8201;git tag -l "v1.8.5*"&#8201;&#8212;&#8201;git tag -a v1.4 -m "my version 1.4"&#8201;&#8212;&#8201;git tag -a v1.2 9fceb02</li>
+<li>git diff --staged</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+Reset<div class="ulist">
+<ul>
+<li>git reset HEAD monFichier.txt (Unstage)</li>
+<li>git reset --soft HEAD~2</li>
+<li>git reset --hard 4556a12</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+Tag<div class="ulist">
+<ul>
+<li>git tag</li>
+<li>git tag -l "v1.8.5*"</li>
+<li>git tag -a v1.4 -m "my version 1.4"</li>
+<li>git tag -a v1.2 9fceb02</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+Checkout<div class="ulist">
+<ul>
+<li>git checkout&#8201;&#8212;&#8201;&lt;file&gt; (Discard changes)</li>
+</ul>
+</div></p></li>
 </ul>
 </div>
 </section>
@@ -238,68 +261,322 @@ git commit -m "done"</code></pre>
 <h2>Les remotes</h2>
 <div class="ulist">
 <ul>
-<li>git clone</li>
-<li>git remote&#8201;&#8212;&#8201;git remote -v&#8201;&#8212;&#8201;git remote add github <a class="bare" href="https://github.com/dunska/super-projet">https://github.com/dunska/super-projet</a></li>
-<li>git push</li>
-<li>git pull</li>
+<li class="slide"><p>
+git clone<div class="ulist">
+<ul>
+<li>git clone <a class="bare" href="https://github.com/libgit2/libgit2">https://github.com/libgit2/libgit2</a> myProject</li>
 </ul>
+</div></p></li>
+<li class="slide"><p>
+git remote<div class="ulist">
+<ul>
+<li>git remote -v</li>
+<li>git remote add github <a class="bare" href="https://github.com/dunska/super-projet">https://github.com/dunska/super-projet</a></li>
+<li>git remote show origin</li>
+</ul>
+</div></p></li>
+<li class="slide"><p>
+git push<div class="ulist">
+<ul>
+<li>git push origin [branch]</li>
+<li>git push origin [tagname]</li>
+<li>git push origin --tags</li>
+</ul>
+</div></p></li>
+</ul>
+</div>
+</section>
+<section class="slide" id="_créer_une_branche">
+<h2>Créer une branche</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">$ git branch testing</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="head to master" src="resources/head-to-master.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_switcher_sur_une_branche">
+<h2>Switcher sur une branche</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">git checkout testing</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="head to testing" src="resources/head-to-testing.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_travailler_sur_une_branche">
+<h2>Travailler sur une branche</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">$ vim test.rb
+$ git commit -a -m 'made a change'</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="advance testing" src="resources/advance-testing.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_travailler_sur_une_autre_branche_master">
+<h2>Travailler sur une autre branche (master)</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">$ git checkout master
+$ vim test.rb
+$ git commit -a -m 'made other changes'</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="advance master" src="resources/advance-master.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_merge_d_une_branche_dans_une_autre">
+<h2>Merge d&#8217;une branche dans une autre</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">$ git checkout master
+Switched to branch 'master'</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="basic merging 1" src="resources/basic-merging-1.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_merge_d_une_branche_dans_une_autre_2">
+<h2>Merge d&#8217;une branche dans une autre</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">$ git merge iss53
+Merge made by the 'recursive' strategy.
+index.html |    1 +
+1 file changed, 1 insertion(+)</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="basic merging 2" src="resources/basic-merging-2.png">
+</div>
+</div>
+<div class="paragraph slide"><p><em>Il peut y avoir des conflits à gérer</em></p></div>
+</section>
+<section class="slide" id="_le_fast_forward">
+<h2>Le fast-forward</h2>
+<div class="paragraph"><p>Si possible, Git cherche à ne pas créer de <em>commit de merge</em> même si on lui demande un <em>merge</em></p></div>
+<div class="imageblock">
+<div class="content">
+<img alt="basic branching 4" src="resources/basic-branching-4.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_le_fast_forward_2">
+<h2>Le fast-forward</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">$ git checkout master
+$ git merge hotfix
+Updating f42c576..3a0874c
+Fast-forward
+ index.html | 2 ++
+ 1 file changed, 2 insertions(+)</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img alt="basic branching 5" src="resources/basic-branching-5.png">
+</div>
+</div>
+<div class="openblock slide">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">$ git branch -d hotfix
+Deleted branch hotfix (3a0874c).</code></pre>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section class="slide" id="_les_branches">
 <h2>Les branches</h2>
 <div class="ulist">
 <ul>
-<li>Explication git push origin master</li>
-<li>git checkout</li>
-<li>git fetch</li>
+<li><p>
+Vision des branches<div class="ulist">
+<ul>
+<li>git branch --merged</li>
+<li>git branch --no-merged</li>
+</ul>
+</div></p></li>
+<li><p>
+Suppression<div class="ulist">
+<ul>
+<li>git branch -d testing / git branch -D testing</li>
+</ul>
+</div></p></li>
+<li><p>
+Creation<div class="ulist">
+<ul>
+<li>git checkout -b [branchname] [tagname]</li>
+</ul>
+</div></p></li>
 </ul>
 </div>
 </section>
-<section class="slide" id="_le_merge_rebase">
-<h2>Le merge / rebase</h2>
-<div class="ulist">
-<ul>
-<li><p>
-amend<div class="listingblock">
+<section class="slide" id="_le_fetch">
+<h2>Le fetch</h2>
+<div class="imageblock">
+<div class="content">
+<img alt="remote branches 5" src="resources/remote-branches-5.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_le_rebase">
+<h2>Le rebase</h2>
+<div class="imageblock">
+<div class="content">
+<img alt="basic rebase 1" src="resources/basic-rebase-1.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_le_rebase_2">
+<h2>Le rebase</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">$ git checkout experiment
+$ git rebase master
+First, rewinding head to replay your work on top of it...
+Applying: added staged command</code></pre>
+</div>
+</div>
+<div class="imageblock slide">
+<div class="content">
+<img alt="basic rebase 3" src="resources/basic-rebase-3.png">
+</div>
+</div>
+</section>
+<section class="slide" id="_le_rebase_3">
+<h2>Le rebase</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">$ git checkout master
+$ git merge experiment</code></pre>
+</div>
+</div>
+<div class="imageblock slide">
+<div class="content">
+<img alt="basic rebase 4" src="resources/basic-rebase-4.png">
+</div>
+</div>
+<section class="slide" id="_pull_rebase">
+<h2>Pull rebase</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">$ git pull --rebase</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section class="slide" id="_jouer_avec_les_commits">
+<h2>Jouer avec les commits</h2>
+<section class="slide" id="_amend">
+<h2>Amend</h2>
+<div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>$ git commit -m 'initial commit'
 $ git add forgotten_file
 $ git commit --amend</code></pre>
 </div>
-</div></p></li>
-<li>merge/rebase branch</li>
-</ul>
 </div>
-<div class="paragraph"><p>&#8201;&#8212;&#8201;git merge
---- git branch --merged
---- git branch --no-merged
---- git branch -d testing / git branch -D testing</p></div>
-<div class="paragraph"><p>&#8201;&#8212;&#8201;Conflit</p></div>
+</section>
+<section class="slide" id="_cherry_pick">
+<h2>Cherry-pick</h2>
+<div class="paragraph"><p>Permet d&#8217;appliquer un ou des commits données sur la branche actuelle</p></div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html
-&lt;div id="footer"&gt;contact : email.support@github.com&lt;/div&gt;
-=======
-&lt;div id="footer"&gt;
- please contact us at support@github.com
-&lt;/div&gt;
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>gpr</li>
-</ul>
-</div>
-<section class="slide" id="_le_fast_forward">
-<h2>Le fast-forward</h2>
-<div class="paragraph"><p>Si possible, Git cherche à ne pas créer de <em>commit de merge</em> même si on lui demande un <em>merge</em></p></div>
-<div class="imageblock">
-<div class="content">
-<img alt="Fast-forward illustration" src="ressources/ff.png">
+<pre class="highlight"><code>$ git cherry-pick d42c389f
+$ git cherry-pick master~4 master~2</code></pre>
 </div>
 </div>
 </section>
+<section class="slide" id="_revert">
+<h2>Revert</h2>
+<div class="paragraph"><p>Permet de créer un commit qui en annule un ou des autres</p></div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git revert d42c389f
+$ git revert HEAD~3</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section class="slide" id="_le_add_partiel">
+<h2>Le add partiel</h2>
+<div class="paragraph"><p>Donne la possibilité de n&#8217;ajouter qu&#8217;une ou plusieurs parties des changement d&#8217;un fichier</p></div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git add --patch test.xml
+$ git add --p test.xml</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git add --interactive
+$ git add -i</code></pre>
+</div>
+</div>
+</section>
+<section class="slide" id="_le_rebase_interacif">
+<h2>Le rebase interacif</h2>
+<div class="ulist">
+<ul>
+<li>Editing commit</li>
+<li>Reordering Commits</li>
+<li>Squashing/Fixup Commits</li>
+<li>Splitting a Commit</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git rebase -i HEAD~3
+pick f7f3f6d changed my name a bit
+pick 310154e updated README formatting and added blame
+pick a5f4a0d added cat-file
+# Rebase 710f0f8..a5f4a0d onto 710f0f8
+#
+# Commands:
+#  p, pick = use commit
+#  r, reword = use commit, but edit the commit message
+#  e, edit = use commit, but stop for amending
+#  s, squash = use commit, but meld into previous commit
+#  f, fixup = like "squash", but discard this commit's log message
+#  x, exec = run command (the rest of the line) using shell</code></pre>
+</div>
+</div>
+<div class="paragraph slide"><p><strong>/!\ Pas de Rebase sur ce qui a été poussé /!\</strong></p></div>
+</section>
+<section class="slide" id="_le_bisect">
+<h2>Le bisect</h2>
+<div class="paragraph"><p>Recherche d&#8217;un commit problématique par dichotomie</p></div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git bisect start
+$ git bisect bad                 # Current version is bad
+$ git bisect good v2.6.13-rc2    # v2.6.13-rc2 is known to be good</code></pre>
+</div>
+</div>
 </section>
 <section class="slide" id="_les_alias">
 <h2>Les alias</h2>
@@ -331,14 +608,6 @@ $ git config --global alias.unstage 'reset HEAD --'</code></pre>
 53b89fc HEAD@{5}: commit (initial): Initial commit</code></pre>
 </div>
 </div>
-</section>
-<section class="slide" id="_le_rebase_interacif">
-<h2>Le rebase interacif</h2>
-
-</section>
-<section class="slide" id="_le_bisect">
-<h2>Le bisect</h2>
-<div class="paragraph"><p>Recherche d&#8217;un commit problématique par dichotomie</p></div>
 </section>
 <section class="slide" id="_les_ihm">
 <h2>Les IHM</h2>
@@ -372,6 +641,17 @@ $ git config --global alias.unstage 'reset HEAD --'</code></pre>
 <section class="slide" id="_avantages_et_inconvénients">
 <h2>Avantages et inconvénients</h2>
 
+</section>
+<section class="slide" id="_mais_encore">
+<h2>Mais encore</h2>
+<div class="ulist">
+<ul>
+<li>Revision Selection</li>
+<li>Interactive Staging</li>
+<li>Stash &amp; Clean</li>
+<li>Grep</li>
+</ul>
+</div>
 </section>
 </div>
 <script src="deck.js/jquery.min.js"></script>
