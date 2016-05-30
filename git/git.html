@@ -154,17 +154,35 @@ I&#8217;m an egotistical bastard, and I name all my projects after myself. First
 </section>
 <section class="slide" id="_on_commence">
 <h2>On commence ?</h2>
+<div class="openblock slide">
+<div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>$ git config user.name "Kevin Marcellier"
-$ git config user.email kevin@marcellier.fr
-$ mkdir nouveaurepo
-$ cd nouveaurepo/
+<pre class="highlight"><code class="console language-console">$ git config --global user.name "Kevin Marcellier"
+$ git config --global user.email kevin@marcellier.fr</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock slide">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">$ mkdir mon-projet-git
+$ cd mon-projet-git/
 $ git init
-Initialized empty Git repository in nouveaurepo/.git/
+Initialized empty Git repository in mon-projet-git/.git/
 $ git commit -m "Initial commit" --allow-empty
-[master (root-commit) 53b89fc] Initial commit
-$ touch monFichier.txt
+[master (root-commit) 53b89fc] Initial commit</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="openblock slide">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="console language-console">$ touch monFichier.txt
 $ git add monFichier.txt
 $ git commit -m "Création d'un premier fichier."
 [master 2ce6ac4] Création d'un premier fichier.
@@ -172,22 +190,24 @@ $ git commit -m "Création d'un premier fichier."
 create mode 100644 monFichier.txt</code></pre>
 </div>
 </div>
+</div>
+</div>
 </section>
 <section class="slide" id="_les_bases_le_staging_et_les_commits">
 <h2>Les bases : Le staging et les commits</h2>
 <div class="ulist">
 <ul>
-<li>git status</li>
 <li>git add</li>
 <li>git commit</li>
+<li>git status</li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img alt="git staging area" src="resources/git-staging-area.png">
+<img alt="areas" src="resources/areas.png">
 </div>
 </div>
-</section>
+<div class="paragraph"><p><em>Le fichier .gitignore permet de définir les fichier à ignorer.</em></p></div>
 <section class="slide" id="_quizz">
 <h2>Quizz</h2>
 <div class="listingblock">
@@ -200,12 +220,17 @@ git commit -m "done"</code></pre>
 </div>
 </div>
 </section>
-<section class="slide" id="_todo">
-<h2>TODO</h2>
+</section>
+<section class="slide" id="_quelques_commandes_utiles">
+<h2>Quelques commandes utiles</h2>
 <div class="ulist">
 <ul>
-<li>git log</li>
+<li>git log&#8201;&#8212;&#8201;git log --pretty=oneline&#8201;&#8212;&#8201;git log --pretty=format:"%h - %an, %ar : %s"&#8201;&#8212;&#8201;git log --pretty="%h - %s" --author=gitster --since="2008-10-01" --before="2008-11-01" --no-merges</li>
 <li>git diff</li>
+<li>git reset&#8201;&#8212;&#8201;git reset HEAD monFichier.txt</li>
+<li>git checkout&#8201;&#8212;&#8201;&lt;file&gt;</li>
+<li>git fetch [remote-name]</li>
+<li>git tag&#8201;&#8212;&#8201;git tag -l "v1.8.5*"&#8201;&#8212;&#8201;git tag -a v1.4 -m "my version 1.4"&#8201;&#8212;&#8201;git tag -a v1.2 9fceb02</li>
 </ul>
 </div>
 </section>
@@ -214,7 +239,7 @@ git commit -m "done"</code></pre>
 <div class="ulist">
 <ul>
 <li>git clone</li>
-<li>git remote</li>
+<li>git remote&#8201;&#8212;&#8201;git remote -v&#8201;&#8212;&#8201;git remote add github <a class="bare" href="https://github.com/dunska/super-projet">https://github.com/dunska/super-projet</a></li>
 <li>git push</li>
 <li>git pull</li>
 </ul>
@@ -234,9 +259,36 @@ git commit -m "done"</code></pre>
 <h2>Le merge / rebase</h2>
 <div class="ulist">
 <ul>
-<li>amend</li>
-<li>gpr</li>
+<li><p>
+amend<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git commit -m 'initial commit'
+$ git add forgotten_file
+$ git commit --amend</code></pre>
+</div>
+</div></p></li>
 <li>merge/rebase branch</li>
+</ul>
+</div>
+<div class="paragraph"><p>&#8201;&#8212;&#8201;git merge
+--- git branch --merged
+--- git branch --no-merged
+--- git branch -d testing / git branch -D testing</p></div>
+<div class="paragraph"><p>&#8201;&#8212;&#8201;Conflit</p></div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html
+&lt;div id="footer"&gt;contact : email.support@github.com&lt;/div&gt;
+=======
+&lt;div id="footer"&gt;
+ please contact us at support@github.com
+&lt;/div&gt;
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>gpr</li>
 </ul>
 </div>
 <section class="slide" id="_le_fast_forward">
@@ -248,6 +300,18 @@ git commit -m "done"</code></pre>
 </div>
 </div>
 </section>
+</section>
+<section class="slide" id="_les_alias">
+<h2>Les alias</h2>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+$ git config --global alias.unstage 'reset HEAD --'</code></pre>
+</div>
+</div>
 </section>
 <section class="slide" id="_quelques_autres_commandes_intéressantes">
 <h2>Quelques autres commandes intéressantes</h2>

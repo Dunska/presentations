@@ -89,31 +89,46 @@ image::resources/snapshots-vs-delta.png[]
 
 == On commence ?
 
-[source]
-$ git config user.name "Kevin Marcellier"
-$ git config user.email kevin@marcellier.fr
-$ mkdir nouveaurepo
-$ cd nouveaurepo/
+[%step]
+--
+[source, console]
+$ git config --global user.name "Kevin Marcellier"
+$ git config --global user.email kevin@marcellier.fr
+--
+
+[%step]
+--
+[source, console]
+$ mkdir mon-projet-git
+$ cd mon-projet-git/
 $ git init
-Initialized empty Git repository in nouveaurepo/.git/
+Initialized empty Git repository in mon-projet-git/.git/
 $ git commit -m "Initial commit" --allow-empty
 [master (root-commit) 53b89fc] Initial commit
+--
+
+[%step]
+--
+[source, console]
 $ touch monFichier.txt
 $ git add monFichier.txt
 $ git commit -m "Création d'un premier fichier."
 [master 2ce6ac4] Création d'un premier fichier.
 0 files changed
 create mode 100644 monFichier.txt
+--
 
 == Les bases : Le staging et les commits
 
-- git status
 - git add
 - git commit
+- git status
 
-image::resources/git-staging-area.png[]
+image::resources/areas.png[]
 
-== Quizz
+_Le fichier .gitignore permet de définir les fichier à ignorer._
+
+=== Quizz
 
 [source]
 .What content has been committed for the _theFile_ file? (1) or (2)?
@@ -124,15 +139,29 @@ echo "Goodbye my friends" > theFile # (2)
 git commit -m "done"
 ----
 
-== TODO
+== Quelques commandes utiles
 
 - git log
+-- git log --pretty=oneline
+-- git log --pretty=format:"%h - %an, %ar : %s"
+-- git log --pretty="%h - %s" --author=gitster --since="2008-10-01" --before="2008-11-01" --no-merges
 - git diff
+- git reset
+-- git reset HEAD monFichier.txt
+- git checkout -- <file>
+- git fetch [remote-name]
+- git tag
+-- git tag -l "v1.8.5*"
+-- git tag -a v1.4 -m "my version 1.4"
+-- git tag -a v1.2 9fceb02
+
 
 == Les remotes
 
 - git clone
 - git remote
+-- git remote -v
+-- git remote add github https://github.com/dunska/super-projet
 - git push
 - git pull
 
@@ -145,14 +174,45 @@ git commit -m "done"
 == Le merge / rebase
 
 - amend
-- gpr
+[source]
+$ git commit -m 'initial commit'
+$ git add forgotten_file
+$ git commit --amend
+
+
 - merge/rebase branch
+
+-- git merge
+--- git branch --merged
+--- git branch --no-merged
+--- git branch -d testing / git branch -D testing
+
+-- Conflit
+[source]
+<<<<<<< HEAD:index.html
+<div id="footer">contact : email.support@github.com</div>
+=======
+<div id="footer">
+ please contact us at support@github.com
+</div>
+>>>>>>> iss53:index.html
+
+- gpr
 
 === Le fast-forward
 
 Si possible, Git cherche à ne pas créer de _commit de merge_ même si on lui demande un _merge_
 
 image::ressources/ff.png[Fast-forward illustration]
+
+== Les alias
+
+[source]
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status
+$ git config --global alias.unstage 'reset HEAD --'
 
 == Quelques autres commandes intéressantes
 
