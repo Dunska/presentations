@@ -363,7 +363,7 @@ $ git add -i
 image::resources/separate.gif[]
 
 
-== Le rebase interacif
+== Le rebase interactif
 
 * Editing commit
 * Reordering Commits
