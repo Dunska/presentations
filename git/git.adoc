@@ -461,6 +461,7 @@ image::resources/Hebergements.png[]
 * Interactive Staging
 * Stash & Clean
 * Grep
+* ...
 
 [%step]
 image::resources/end.gif[]
