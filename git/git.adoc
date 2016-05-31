@@ -15,6 +15,7 @@ Git is a free and open source distributed version control system designed to han
 * Subversion
 * Perforce
 * ClearCase
+* Mercurial
 
 == Histoire
 
@@ -124,30 +125,57 @@ create mode 100644 monFichier.txt
 
 image::resources/areas.png[]
 
-_Le fichier .gitignore permet de définir les fichier à ignorer._
+[%step]
+**Le fichier .gitignore permet de définir les fichier à ignorer.**
 
 == Quelques commandes utiles
 
-[%step]
-* Log
-** git log --pretty=oneline
-** git log --pretty=format:"%h - %an, %ar : %s"
-** git log --pretty="%h - %s" --author=gitster --since="2008-10-01" --before="2008-11-01" --no-merges
-** git log -p -2
-* Diff
-** git diff
-** git diff --staged
-* Reset
-** git reset HEAD monFichier.txt (Unstage)
-** git reset --soft HEAD~2
-** git reset --hard 4556a12
-* Tag
-** git tag
-** git tag -l "v1.8.5*"
-** git tag -a v1.4 -m "my version 1.4"
-** git tag -a v1.2 9fceb02
-* Checkout
-** git checkout -- <file> (Discard changes)
+=== Log
+
+* git log --pretty=oneline
+* git log --pretty=format:"%h - %an, %ar : %s"
+* git log --pretty="%h - %s" --author=gitster --since="2008-10-01" --before="2008-11-01" --no-merges
+* git log -p -2
+
+=== Diff
+
+* git diff
+* git diff --staged
+
+
+=== Reset
+
+* git reset HEAD monFichier.txt (Unstage)
+* git reset --soft HEAD~2
+* git reset --hard 4556a12
+
+
+**Mériterait une présentation complète...**
+
+== Quelques commandes utiles
+
+=== Tag
+* git tag
+* git tag -l "v1.8.5*"
+* git tag -a v1.4 -m "my version 1.4"
+* git tag -a v1.2 9fceb02
+
+=== Checkout
+
+* git checkout -- <file> (Discard changes)
+
+=== Reflog
+
+git _reflog_ : un filet de sécurité qui peut vous sauver la vie
+
+[source,role="console"]
+$ git reflog
+2ce6ac4 HEAD@{0}: checkout: moving from nouvellebranche to master
+07df291 HEAD@{1}: checkout: moving from 07df291f4d7fc93b10f28ae25c04fff67d674f30 to nouvellebranche
+07df291 HEAD@{2}: commit: Nouveau commit
+53b89fc HEAD@{3}: checkout: moving from master to 53b89fc
+2ce6ac4 HEAD@{4}: commit: Création du premier fichier indispensable.
+53b89fc HEAD@{5}: commit (initial): Initial commit
 
 == Les remotes
 
@@ -162,6 +190,7 @@ _Le fichier .gitignore permet de définir les fichier à ignorer._
 ** git push origin [branch]
 ** git push origin [tagname]
 ** git push origin --tags
+
 
 
 
@@ -318,11 +347,13 @@ Donne la possibilité de n'ajouter qu'une ou plusieurs parties des changement d'
 
 [source]
 $ git add --patch test.xml
-$ git add --p test.xml
+$ git add -p test.xml
 
 [source]
 $ git add --interactive
 $ git add -i
+
+image::resources/separate.gif[]
 
 
 == Le rebase interacif
@@ -359,6 +390,9 @@ $ git bisect start
 $ git bisect bad                 # Current version is bad
 $ git bisect good v2.6.13-rc2    # v2.6.13-rc2 is known to be good
 
+
+image::resources/I-Will-Find-You-And-I-Will-Kill-You.gif[]
+
 == Les alias
 
 [source]
@@ -368,43 +402,58 @@ $ git config --global alias.ci commit
 $ git config --global alias.st status
 $ git config --global alias.unstage 'reset HEAD --'
 
-== Quelques autres commandes intéressantes
-
-- git _reflog_ : un filet de sécurité qui peut vous sauver la vie
-
-[source,role="console"]
-$ git reflog
-2ce6ac4 HEAD@{0}: checkout: moving from nouvellebranche to master
-07df291 HEAD@{1}: checkout: moving from 07df291f4d7fc93b10f28ae25c04fff67d674f30 to nouvellebranche
-07df291 HEAD@{2}: commit: Nouveau commit
-53b89fc HEAD@{3}: checkout: moving from master to 53b89fc
-2ce6ac4 HEAD@{4}: commit: Création du premier fichier indispensable.
-53b89fc HEAD@{5}: commit (initial): Initial commit
-
 
 == Les IHM
 
-- Ligne de commande (gitk, git gui)
-- SourceTree
-- SmartGit
-- Plugin Eclipse
-- Intégration native Atom, SublimeText
+* Ligne de commande (gitk, git gui)
+* SourceTree
+* SmartGit
+* Plugin Eclipse
+* Intégration native Atom, SublimeText
 
-== Les repos
+image::resources/IHM.png[]
 
-- GitHub
-- BitBucket
+== Intégration
 
-== Les outils
+=== L'hébergement
 
-- Gerrit
+* GitHub
+* BitBucket
+* Gitlab
+* Gogs
+
+image::resources/Hebergements.png[]
+
+=== Les outils
+
+* Gitflow
+* Gerrit
+* Git-SVN
 
 == Avantages et inconvénients
 
+=== Avantages
 
-== Mais encore
+* Rapide
+* Puissant
+* De beaux historiques
+* Système de branches
+
+=== Inconvénients
+
+* Premiers pas compliqués
+* Noms ou utilisation de commandes parfois déroutantes, notamment quand on vient de Svn
+** git checkout = svn switch, ou revert pour un seul fichier…​
+** git reset --hard = svn revert -R *
+** add : résoudre un conflit, ajouter tout ou partie d’un fichier…​
+* **Retour à SVN difficile**
+
+== Mais encore...
 
 * Revision Selection
 * Interactive Staging
 * Stash & Clean
 * Grep
+
+[%step]
+image::resources/end.gif[]
