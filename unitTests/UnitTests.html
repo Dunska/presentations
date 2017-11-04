@@ -141,16 +141,68 @@
 					<section data-markdown>
           	<textarea data-template>
 
-							Nested
+							### Nested
+
+							```java
+							@DisplayName("Handle device")
+							class TestingDemo {
+
+								@Nested
+								@DisplayName("when new")
+								class WhenNew {
+
+									@BeforeEach
+									void createNew() {...}
+
+									@Test
+									@DisplayName("perfect display name")
+									void perfectTest() {...}
+								}
+
+								@Nested
+								@DisplayName("when create")
+								class WhenCreate {...}
+							}
+							```
+
+          	</textarea>
+					</section>
+
+					<section data-markdown>
+          	<textarea data-template>
+
+							## Repeated Test
+							```java
+							@RepeatedTest(5)
+							void repeatedTestWithRepetitionInfo(RepetitionInfo repetitionInfo) {
+								assertEquals(5, repetitionInfo.getTotalRepetitions());
+							}
+
+							@RepeatedTest(value = 3, name = "{displayName} {currentRepetition}/{totalRepetitions}")
+							@DisplayName("Repeat!")
+							void customDisplayName(TestInfo testInfo) {
+								assertEquals(testInfo.getDisplayName(), "Repeat! 1/1");
+							}
+							```
 
           	</textarea>
 					</section>
 					<section data-markdown>
           	<textarea data-template>
 
-							* @ParameterizedTest
-							* @RepeatedTest
-							* @TestFactory
+							## Parameterized Test
+							```java
+							@ParameterizedTest
+							@ValueSource(strings = { "Hello", "World" })
+							void testWithStringParameter(String argument) {
+								assertNotNull(argument);
+							}
+							```
+
+							* @ValueSource(ints = { 1, 2, 3 }) <!-- .element: class="fragment" data-fragment-index="1" -->
+							* @EnumSource(TimeUnit.class) <!-- .element: class="fragment" data-fragment-index="2" -->
+							* @MethodSource("stringProvider") <!-- .element: class="fragment" data-fragment-index="3" -->
+							* @CsvFileSource(resources = "/two-column.csv") <!-- .element: class="fragment" data-fragment-index="4" -->
 
           	</textarea>
 					</section>
@@ -158,13 +210,25 @@
           	<textarea data-template>
 
 							## Extension
+							```java
+							@ExtendWith(MockitoExtension.class)
+							class MockTests {
+								// ...
+							}
+							```
 
           	</textarea>
 					</section>
 					<section data-markdown>
           	<textarea data-template>
 
-							## Tags
+							## Mais encore ...
+
+							* Tags
+							* @Disabled
+							* Dependency Injection for Constructors and Methods
+							* @TestFactory
+							* ...
 
           	</textarea>
 					</section>
