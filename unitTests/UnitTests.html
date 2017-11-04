@@ -243,25 +243,29 @@
 					<section data-markdown>
           	<textarea data-template>
 
-						## AssertJ
+						![banner](resources/assertJ.png)
 
           	</textarea>
 					</section>
 					<section data-markdown>
           	<textarea data-template>
 
-						## Import
+						## Basic assertion by object type
+
+						```java
+						import static org.assertj.core.api.Assertions.*;
+
+						assertThat(frodo.getName()).isEqualTo("Frodo");
+						assertThat(frodo).isNotEqualTo(sauron);
+
+						assertThat(frodo.getName()).startsWith("Fro")
+										.endsWith("do")
+										.isEqualToIgnoringCase("frodo");
+						```
 
           	</textarea>
 					</section>
-					<section data-markdown>
-          	<textarea data-template>
 
-						## Basic
-
-
-          	</textarea>
-					</section>
 					<section data-markdown>
           	<textarea data-template>
 
@@ -334,6 +338,7 @@
 						* Couverture de code
 						* Sonar
 						* Intégration continue
+						* Arquilian
 
           	</textarea>
 					</section>
