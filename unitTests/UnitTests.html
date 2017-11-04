@@ -48,10 +48,10 @@
 
 						### Les étapes
 
-						* Initialisation
-						* Exercice
-						* Vérification (assertion)
-						* Désactivation
+						* Initialisation <!-- .element: class="fragment" data-fragment-index="1" -->
+						* Exercice <!-- .element: class="fragment" data-fragment-index="2" -->
+						* Vérification (assertion) <!-- .element: class="fragment" data-fragment-index="3" -->
+						* Désactivation <!-- .element: class="fragment" data-fragment-index="4" -->
 
           	</textarea>
 					</section>
@@ -80,34 +80,44 @@
           	</textarea>
 					</section>
 
-					<section data-markdown>
-          	<textarea data-template>
+					<section>
+							<h2>La base</h2>
 
-							## @Test
+							<pre><code data-trim data-noescape>
+							<span class="fragment" data-fragment-index="2">import static org.junit.jupiter.api.Assertions.assertEquals;</span>
 
-							```java
+							<span class="fragment" data-fragment-index="1">import org.junit.jupiter.api.Test;</span>
 
-							import static org.junit.jupiter.api.Assertions.assertEquals;
+							class FirstJUnitTests {
 
-							import org.junit.jupiter.api.Test;
-
-							class FirstJUnit5Tests {
-
-								@Test
-								void myFirstTest() {
-									assertEquals(2, 1 + 1);
-								}
-
+								<span class="fragment" data-fragment-index="1">@Test
+								void myFirstTest() {</span>
+									<span class="fragment" data-fragment-index="2">assertEquals(2, 1 + 1);</span>
+								<span class="fragment" data-fragment-index="1">}</span>
 							}
-							```
-
-          	</textarea>
+						</pre></code>
 					</section>
 					<section data-markdown>
           	<textarea data-template>
 
-							* @BeforeEach	/	@AfterEach
-							* @BeforeAll	/	@AfterAll
+							## Before & After
+
+							```java
+
+							class StandardTests {
+								@BeforeAll
+								static void initAll() {...}
+
+								@BeforeEach
+								void init() {...}
+
+								@AfterEach
+								void tearDown() {...}
+
+								@AfterAll
+								static void tearDownAll() {...}
+							}
+							```
 
           	</textarea>
 					</section>
@@ -138,6 +148,13 @@
           	<textarea data-template>
 
 							## Extension
+
+          	</textarea>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+							## Tags
 
           	</textarea>
 					</section>
