@@ -124,7 +124,17 @@
 					<section data-markdown>
           	<textarea data-template>
 
-							Display name
+							## Display name
+
+							```java
+							@DisplayName("A special test case")
+							class DisplayNameDemo {
+
+								@Test
+								@DisplayName("Custom test name containing spaces")
+								void testWithDisplayNameContainingSpaces() {...}
+							}
+							```
 
           	</textarea>
 					</section>
