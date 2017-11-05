@@ -255,12 +255,18 @@
 						```java
 						import static org.assertj.core.api.Assertions.*;
 
-						assertThat(frodo.getName()).isEqualTo("Frodo");
-						assertThat(frodo).isNotEqualTo(sauron);
+						// Basic for string
+						assertThat(luke.getName()).isEqualTo("Luke Skywalker");
+						assertThat(luke).isNotEqualTo(vador);
 
-						assertThat(frodo.getName()).startsWith("Fro")
-										.endsWith("do")
-										.isEqualToIgnoringCase("frodo");
+						// Basic for Instant
+						assertThat(Instant.now()).isBeforeOrEqualTo(otherInstant);
+						assertThat(Instant.now()).isBetween(startInstant, endInstant);
+
+						// Chaining
+						assertThat(luke.getName()).isNotEmpty()
+										.startsWith("Lu")
+										.endsWith("ker");
 						```
 
           	</textarea>
@@ -320,7 +326,7 @@
 					<section data-markdown>
           	<textarea data-template>
 
-						## Mockito
+						![banner](resources/mockito.png)
 
           	</textarea>
 					</section>
