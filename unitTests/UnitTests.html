@@ -220,6 +220,16 @@
           	</textarea>
 					</section>
 					<section data-markdown>
+						<textarea data-template>
+
+							## Create Rule
+
+							TODO
+
+						</textarea>
+					</section>
+
+					<section data-markdown>
           	<textarea data-template>
 
 							## Mais encore ...
@@ -265,8 +275,8 @@
 
 						// Chaining
 						assertThat(luke.getName()).isNotEmpty()
-										.startsWith("Lu")
-										.endsWith("ker");
+										          .startsWith("Lu")
+										          .endsWith("ker");
 						```
 
           	</textarea>
@@ -276,9 +286,26 @@
           	<textarea data-template>
 
 						## Collections
-						* Size, contain, doesnotcontain...
-						* Extract property, tuple
-						* flatExtracting
+
+						```java
+						assertThat(jedis).hasSize(21)
+						                 .contains(luke, yoda)
+						                 .doesNotContain(r2d2);
+
+						assertThat(jedis).extracting("name") //.extracting(People::getName)
+						                 .doesNotContain("C-3PO", "Jar Jar Binks")
+                 .contains("Obi-Wan Kenobi");
+
+						assertThat(humans).extracting("name", "hairColor", "eyeColor")
+						                  .contains(tuple("Wilhuff Tarkin", "auburn, grey", "blue"),
+                            tuple("Biggs Darklighter", "black", "brown"),
+                            tuple("Owen Lars", "brown, grey", "blue"));
+						```
+
+						* containsExactlyInAnyOrder <!-- .element: class="fragment" data-fragment-index="1" -->
+						* containsOnlyOnce <!-- .element: class="fragment" data-fragment-index="1" -->
+						* flatExtracting <!-- .element: class="fragment" data-fragment-index="1" -->
+						* ... <!-- .element: class="fragment" data-fragment-index="1" -->
 
           	</textarea>
 					</section>
@@ -287,33 +314,110 @@
 
 						## Exception
 
-          	</textarea>
-					</section>
-					<section data-markdown>
-          	<textarea data-template>
+						```java
 
-						## Describe your assertion with as(String description, Object... args)
+						assertThatExceptionOfType(IOException.class).isThrownBy(() -> monService.methodeAtester())
+						                                            .withMessage("%s!", "boom")
+                                            .withMessageContaining("boom")
+                                            .withNoCause();
 
-          	</textarea>
-					</section>
-					<section data-markdown>
-          	<textarea data-template>
+						```
 
-							File
+						![bb8](resources/bb8-ok.gif)
 
           	</textarea>
 					</section>
 					<section data-markdown>
           	<textarea data-template>
 
-							compareByField
+						## Describe your assertion with as
+
+						```java
+						assertThat(yoda.getAge()).as("check %s's age", yoda.getName()).isEqualTo(100);
+						```
+
+						> [check Yoda's age] expected:<100> but was:<???>
+
+						![yoda](resources/yoda-notry.gif)
 
           	</textarea>
 					</section>
 					<section data-markdown>
           	<textarea data-template>
 
-							Creating assertions specific to your classes
+							## File
+
+							```java
+
+							assertThat(xFile).exists().isFile().hasExtension(".txt");
+
+							assertThat(contentOf(xFile)).startsWith("Guide du voyageur").contains("42").endsWith(".");
+
+							```
+
+							Tout est chargé en mémoire donc on fait attention à la taille du fichier
+
+          	</textarea>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+							## Compare By Field
+
+							```java
+							assertThat(yoda).isNotEqualTo(yoda);
+							assertThat(yoda).isEqualToComparingFieldByField(yodaClone);
+							```
+
+							* isEqualToComparingFieldByField <!-- .element: class="fragment" data-fragment-index="1" -->
+							* isEqualToComparingOnlyGivenFields <!-- .element: class="fragment" data-fragment-index="1" -->
+							* isEqualToIgnoringGivenFields <!-- .element: class="fragment" data-fragment-index="1" -->
+							* isEqualToIgnoringNullFields <!-- .element: class="fragment" data-fragment-index="1" -->
+
+          	</textarea>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+							## Soft Assertion
+
+							```java
+
+							SoftAssertions.assertSoftly(softly -> {
+								softly.assertThat(...).as("XXX").isEqualTo(7);
+								softly.assertThat(...).as("Toto").isEqualTo("zzz");
+								softly.assertThat(...).as("Price").isEqualTo("val1");
+								softly.assertThat(...).as("Picture size").isEqualTo(6);
+								softly.assertThat(...).as("Presentation").isEqualTo("perfect");
+							});
+
+							```
+
+
+							>The following 3 assertions failed: <!-- .element: class="fragment" data-fragment-index="1" -->
+
+							>   1) [XXX] expected:<[7]> but was:<[6]> <!-- .element: class="fragment" data-fragment-index="1" -->
+
+							>   2) [Price] expected:<'[val1]'> but was:<'[val2]'> <!-- .element: class="fragment" data-fragment-index="1" -->
+
+							>   3) [Presentation] expected:<'[perfect]'> but was:<'[correct]'> <!-- .element: class="fragment" data-fragment-index="1" -->
+
+          	</textarea>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+							## Creating assertions specific to your classes
+
+							```java
+
+							StarWarsCharacterAssert.assertThat(yoda).hasName("Yoda")
+                                        .isJedi()
+                                        .hasLightSaber("Green");
+
+							```
+
+							![go](resources/lets-go.gif)
 
           	</textarea>
 					</section>
@@ -345,6 +449,13 @@
 						* Sonar
 						* Intégration continue
 						* Arquilian
+
+          	</textarea>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+							![yoda](resources/yoda-impossible.gif)
 
           	</textarea>
 					</section>
