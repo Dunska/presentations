@@ -432,8 +432,131 @@
 
 						![banner](resources/mockito.png)
 
+						### Stub & Verify
+
           	</textarea>
 					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+						### Création d'un objet mocké
+
+						```java
+
+						People people = Mockito.mock(People.class);
+
+						@Mock
+						People people;
+
+						```
+
+						![magic](resources/magic.gif)
+
+          	</textarea>
+					</section>
+					<section>
+
+						<h3>Stubbing : Définition du comportement des objets mockés</h3>
+
+						<pre><code data-trim data-noescape>
+						<span class="fragment" data-fragment-index="1">Mockito.when(user.getLogin()).thenReturn("Luke Skywalker");</span>
+
+						<span class="fragment" data-fragment-index="2">Mockito.when(user.getLogin()).thenCallRealMethod();</span>
+
+						<span class="fragment" data-fragment-index="3">Mockito.when(user.getLogin()).thenThrow(new RuntimeException());</span>
+
+						<span class="fragment" data-fragment-index="4">Mockito.when(user.getLogin()).thenReturn("Yoda","Obiwan Kenobi","Luke skywalker");</span>
+						</code></pre>
+
+					</section>
+					<section>
+
+						<h3>Verify</h3>
+
+						<pre><code data-trim data-noescape>
+						<span class="fragment" data-fragment-index="1">verify(mockedList).add("once");</span>
+
+						<span class="fragment" data-fragment-index="2">verify(mockedList, times(3)).add("three times");
+						verify(mockedList, never()).add("never happened");</span>
+
+						<span class="fragment" data-fragment-index="3">verify(mockedList, atLeastOnce()).add("three times");
+						verify(mockedList, atLeast(2)).add("three times");
+						verify(mockedList, atMost(5)).add("three times");</span>
+
+						<span class="fragment" data-fragment-index="4">verifyZeroInteractions(mockTwo, mockThree);
+						verifyNoMoreInteractions(mockedList);</span>
+
+						</code></pre>
+
+						<span class="fragment" data-fragment-index="5">
+						<h3>Void Methods</h3>
+						<pre><code data-trim data-noescape>
+
+						doThrow(new RuntimeException()).when(mockedList).clear();
+						doReturn("MyMockedValue").when(mockedService).getValue(anyString());
+
+						</code></pre></span>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+						### Argument Matching
+
+						```java
+
+						when(mockedList.get(anyInt())).thenReturn("element");
+						when(mockedList.get(argThat(someString -> someString.length() > 5))).thenReturn("element");
+
+						// If you are using argument matchers, all arguments have to be provided by matchers.
+						verify(mock).someMethod(any(People.class), anyString(), eq("third argument"));
+
+						```
+
+						![verify](resources/verify.gif)
+
+          	</textarea>
+					</section>
+
+					<section data-markdown>
+          	<textarea data-template>
+
+						### Spy
+
+						```java
+
+						List list = new LinkedList();
+						List spy = spy(list);
+
+						//optionally, you can stub out some methods:
+						when(spy.size()).thenReturn(100);
+
+						//using the spy calls *real* methods
+						spy.add("one");
+
+						//optionally, you can verify
+						verify(spy).add("one");
+
+						```
+          	</textarea>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+						### Argument Captor
+
+						```java
+
+						ArgumentCaptor<Person> argument = ArgumentCaptor.forClass(Person.class);
+						verify(mock).doSomething(argument.capture());
+						assertEquals("John", argument.getValue().getName());
+
+						```
+
+						![captor](resources/captor.gif)
+
+          	</textarea>
+					</section>
+
         </section>
 
 				<!-- *********************************************************** -->
