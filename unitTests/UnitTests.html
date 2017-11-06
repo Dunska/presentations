@@ -47,7 +47,7 @@
 						<textarea data-template>
 
 						### Les étapes
-
+						<br>
 						* Initialisation <!-- .element: class="fragment" data-fragment-index="1" -->
 						* Exercice <!-- .element: class="fragment" data-fragment-index="2" -->
 						* Vérification (assertion) <!-- .element: class="fragment" data-fragment-index="3" -->
@@ -61,6 +61,23 @@
 						> Les tests unitaires font partie du développement
 
 						![reaction](resources/reaction.gif)
+
+						</textarea>
+					</section>
+					<section data-markdown>
+						<textarea data-template>
+
+						### FIRST
+						<br>
+
+						* Fast <!-- .element: class="fragment" data-fragment-index="1" --><!-- .element: class="fragment" data-fragment-index="1" -->
+						* Isolated & Independent <!-- .element: class="fragment" data-fragment-index="2" -->
+						* Repeatable <!-- .element: class="fragment" data-fragment-index="3" -->
+						* Self-Validating <!-- .element: class="fragment" data-fragment-index="4" -->
+						* Thorough & Timely <!-- .element: class="fragment" data-fragment-index="5" -->
+
+						<br>
+						> https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing
 
 						</textarea>
 					</section>
@@ -81,7 +98,9 @@
 					</section>
 
 					<section>
+
 							<h2>La base</h2>
+							<br>
 
 							<pre><code data-trim data-noescape>
 							<span class="fragment" data-fragment-index="2">import static org.junit.jupiter.api.Assertions.assertEquals;</span>
@@ -96,11 +115,13 @@
 								<span class="fragment" data-fragment-index="1">}</span>
 							}
 						</pre></code>
+
 					</section>
 					<section data-markdown>
           	<textarea data-template>
 
 							## Before & After
+							<br>
 
 							```java
 
@@ -125,6 +146,7 @@
           	<textarea data-template>
 
 							## Display name
+							<br>
 
 							```java
 							@DisplayName("A special test case")
@@ -142,6 +164,7 @@
           	<textarea data-template>
 
 							### Nested
+							<br>
 
 							```java
 							@DisplayName("Handle device")
@@ -164,7 +187,6 @@
 								class WhenCreate {...}
 							}
 							```
-
           	</textarea>
 					</section>
 
@@ -172,6 +194,8 @@
           	<textarea data-template>
 
 							## Repeated Test
+							<br>
+
 							```java
 							@RepeatedTest(5)
 							void repeatedTestWithRepetitionInfo(RepetitionInfo repetitionInfo) {
@@ -184,13 +208,14 @@
 								assertEquals(testInfo.getDisplayName(), "Repeat! 1/1");
 							}
 							```
-
           	</textarea>
 					</section>
 					<section data-markdown>
           	<textarea data-template>
 
 							## Parameterized Test
+							<br>
+
 							```java
 							@ParameterizedTest
 							@ValueSource(strings = { "Hello", "World" })
@@ -198,7 +223,7 @@
 								assertNotNull(argument);
 							}
 							```
-
+							<br>
 							* @ValueSource(ints = { 1, 2, 3 }) <!-- .element: class="fragment" data-fragment-index="1" -->
 							* @EnumSource(TimeUnit.class) <!-- .element: class="fragment" data-fragment-index="2" -->
 							* @MethodSource("stringProvider") <!-- .element: class="fragment" data-fragment-index="3" -->
@@ -210,6 +235,8 @@
           	<textarea data-template>
 
 							## Extension
+							<br>
+
 							```java
 							@ExtendWith(MockitoExtension.class)
 							class MockTests {
@@ -219,20 +246,12 @@
 
           	</textarea>
 					</section>
-					<section data-markdown>
-						<textarea data-template>
-
-							## Create Rule
-
-							TODO
-
-						</textarea>
-					</section>
 
 					<section data-markdown>
           	<textarea data-template>
 
 							## Mais encore ...
+							<br>
 
 							* Tags
 							* @Disabled
@@ -261,6 +280,7 @@
           	<textarea data-template>
 
 						## Basic assertion by object type
+						<br>
 
 						```java
 						import static org.assertj.core.api.Assertions.*;
@@ -286,6 +306,7 @@
           	<textarea data-template>
 
 						## Collections
+						<br>
 
 						```java
 						assertThat(jedis).hasSize(21)
@@ -301,6 +322,7 @@
                             tuple("Biggs Darklighter", "black", "brown"),
                             tuple("Owen Lars", "brown, grey", "blue"));
 						```
+						<br>
 
 						* containsExactlyInAnyOrder <!-- .element: class="fragment" data-fragment-index="1" -->
 						* containsOnlyOnce <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -313,6 +335,7 @@
           	<textarea data-template>
 
 						## Exception
+						<br>
 
 						```java
 
@@ -322,6 +345,7 @@
                                             .withNoCause();
 
 						```
+						<br>
 
 						![bb8](resources/bb8-ok.gif)
 
@@ -331,10 +355,12 @@
           	<textarea data-template>
 
 						## Describe your assertion with as
+						<br>
 
 						```java
 						assertThat(yoda.getAge()).as("check %s's age", yoda.getName()).isEqualTo(100);
 						```
+						<br>
 
 						> [check Yoda's age] expected:<100> but was:<???>
 
@@ -346,6 +372,7 @@
           	<textarea data-template>
 
 							## File
+							<br>
 
 							```java
 
@@ -363,11 +390,13 @@
           	<textarea data-template>
 
 							## Compare By Field
+							<br>
 
 							```java
 							assertThat(yoda).isNotEqualTo(yoda);
 							assertThat(yoda).isEqualToComparingFieldByField(yodaClone);
 							```
+							<br>
 
 							* isEqualToComparingFieldByField <!-- .element: class="fragment" data-fragment-index="1" -->
 							* isEqualToComparingOnlyGivenFields <!-- .element: class="fragment" data-fragment-index="1" -->
@@ -380,6 +409,7 @@
           	<textarea data-template>
 
 							## Soft Assertion
+							<br>
 
 							```java
 
@@ -408,6 +438,7 @@
           	<textarea data-template>
 
 							## Creating assertions specific to your classes
+							<br>
 
 							```java
 
@@ -416,6 +447,7 @@
                                         .hasLightSaber("Green");
 
 							```
+							<br>
 
 							![go](resources/lets-go.gif)
 
@@ -440,6 +472,7 @@
           	<textarea data-template>
 
 						### Création d'un objet mocké
+						<br>
 
 						```java
 
@@ -457,6 +490,7 @@
 					<section>
 
 						<h3>Stubbing : Définition du comportement des objets mockés</h3>
+						<br>
 
 						<pre><code data-trim data-noescape>
 						<span class="fragment" data-fragment-index="1">Mockito.when(user.getLogin()).thenReturn("Luke Skywalker");</span>
@@ -472,6 +506,7 @@
 					<section>
 
 						<h3>Verify</h3>
+						<br>
 
 						<pre><code data-trim data-noescape>
 						<span class="fragment" data-fragment-index="1">verify(mockedList).add("once");</span>
@@ -487,9 +522,11 @@
 						verifyNoMoreInteractions(mockedList);</span>
 
 						</code></pre>
+						<br>
 
 						<span class="fragment" data-fragment-index="5">
 						<h3>Void Methods</h3>
+						<br>
 						<pre><code data-trim data-noescape>
 
 						doThrow(new RuntimeException()).when(mockedList).clear();
@@ -501,6 +538,7 @@
           	<textarea data-template>
 
 						### Argument Matching
+						<br>
 
 						```java
 
@@ -511,6 +549,7 @@
 						verify(mock).someMethod(any(People.class), anyString(), eq("third argument"));
 
 						```
+						<br>
 
 						![verify](resources/verify.gif)
 
@@ -521,6 +560,7 @@
           	<textarea data-template>
 
 						### Spy
+						<br>
 
 						```java
 
@@ -543,6 +583,7 @@
           	<textarea data-template>
 
 						### Argument Captor
+						<br>
 
 						```java
 
@@ -560,42 +601,109 @@
         </section>
 
 				<!-- *********************************************************** -->
-				<!-- * Outils * -->
+				<!-- * Outils & Méthodes * -->
 				<!-- *********************************************************** -->
 				<section>
 					<section data-markdown>
           	<textarea data-template>
 
-						## Outils
+						## Outils & Méthodes
 
-						* Couverture de code
-						* Sonar
+						![captor](resources/tools.gif)
+
+          	</textarea>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+						## Intégration
+						<br>
+
 						* Intégration continue
-						* Arquilian
+						* Sonar
+						* Couverture de code
 
           	</textarea>
 					</section>
 					<section data-markdown>
           	<textarea data-template>
 
-							![yoda](resources/yoda-impossible.gif)
+						## D'autres frameworks
+						<br>
+
+						* WireMock
+						* Arquilian
+						* Selenium
+						* ...
 
           	</textarea>
 					</section>
-        </section>
-
-				<!-- *********************************************************** -->
-				<!-- * Méthodes * -->
-				<!-- *********************************************************** -->
-				<section>
 					<section data-markdown>
           	<textarea data-template>
 
 						## Méthodes de développement
+						<br>
 
-						* Test Driven development
-						* Test first
-						* Performance Test
+						![monkey](resources/dev_monkey.gif)
+
+          	</textarea>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+						##  Test Driven development
+						<br>
+
+						* Ecriture d'un test unitaire <!-- .element: class="fragment" data-fragment-index="1" -->
+						* Vérification que le test échoue <!-- .element: class="fragment" data-fragment-index="2" -->
+						* Ecriture du test suffisant pour passer le code <!-- .element: class="fragment" data-fragment-index="3" -->
+						* Vérification que le test passe <!-- .element: class="fragment" data-fragment-index="4" -->
+						* Refactoring du code <!-- .element: class="fragment" data-fragment-index="5" -->
+
+						<br>
+
+						### Les avantages <!-- .element: class="fragment" data-fragment-index="6" -->
+
+						* Les tests unitaires sont réellement écrits. <!-- .element: class="fragment" data-fragment-index="6" -->
+						* La satisfaction du développeur permet d'obtenir un code plus cohérent. <!-- .element: class="fragment" data-fragment-index="6" -->
+						* Clarification des détails de l'interface et du comportement <!-- .element: class="fragment" data-fragment-index="6" -->
+						* Non présence de régression et sécurité pour la maintenance <!-- .element: class="fragment" data-fragment-index="6" -->
+
+          	</textarea>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+						##  Test first
+						<br>
+
+						On écrit tous les tests avant de commencer à coder
+						<br>
+						<br>
+
+						## Performance Test <!-- .element: class="fragment" data-fragment-index="1" -->
+						<br>
+
+						On attache une importance particulière aux performances : <!-- .element: class="fragment" data-fragment-index="1" -->
+
+						* Nombre de requêtes en base <!-- .element: class="fragment" data-fragment-index="1" -->
+						* Vitesse d'execution <!-- .element: class="fragment" data-fragment-index="1" -->
+						* ... <!-- .element: class="fragment" data-fragment-index="1" -->
+
+					</textarea>
+					</section>
+						<section data-markdown>
+	          	<textarea data-template>
+
+						## Behavior-driven Development
+						<br>
+
+						On utilise un langage naturel pour coder les tests
+						<br>
+
+						* Given
+						* When
+						* Then
 
           	</textarea>
 					</section>
@@ -609,6 +717,40 @@
           	<textarea data-template>
 
 						## Conclusion
+
+          	</textarea>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+						## On peut faire des tests unitaires
+
+						![yoda](resources/yoda-impossible.gif)
+
+          	</textarea>
+					</section data-markdown>
+					<section data-markdown>
+          	<textarea data-template>
+
+						## Un bug = Un test unitaire
+
+          	</textarea>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+						## Tests unitaires vs Tests intégration
+
+						![oups](resources/it_vs_ut.gif)
+
+          	</textarea>
+					</section>
+					<section data-markdown>
+          	<textarea data-template>
+
+						## Questions
+
+						<img src="resources/questions.gif" alt="Drawing" style="width: 600px;"/>
 
           	</textarea>
 					</section>
